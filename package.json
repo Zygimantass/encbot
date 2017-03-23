@@ -1,0 +1,32 @@
+{
+  "name": "encbot",
+  "version": "0.0.1",
+  "description": "we have the best bots, the biggest ones, the greatest.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zygimantass/encbot.git"
+  },
+  "keywords": [
+    "bot",
+    "selfbot",
+    "enc"
+  ],
+  "author": "Zygimantass (enc0der)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zygimantass/encbot/issues"
+  },
+  "homepage": "https://github.com/Zygimantass/encbot#readme",
+  "dependencies": {
+    "discord.js": "^11.0.0",
+    "node-osu": "^1.2.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
