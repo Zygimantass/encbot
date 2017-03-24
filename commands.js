@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const osu = require("node-osu");
 const settings = require("./settings.json")
+const lsettings = require("./settings.js").lstorage;
 
 exports.ping = function(message) {
   message.edit("pong");
@@ -38,11 +39,11 @@ exports.osustats = function (message) {
 exports.bio = function (message) {
   embed = new Discord.RichEmbed();
 
-  embed.setTitle("@Žygimantas👻#1755's info");
+  embed.setTitle(settings.bio.username + "'s info");
   embed.setColor(0x03FE03);
 
-  embed.addField("Github:", "https://github.com/Zygimantass", false);
-  embed.addField("Life stuff: ", "I am Žygimantas, 14 years old and live in Lithuania", false);
+  embed.addField("Github:", settings.bio.github, false);
+  embed.addField("Life stuff: ", settings.bio.lifestuff, false);
 
   embed.setFooter("encbot, created with ❤️️ by @Žygimantas👻#1755");
 
@@ -61,4 +62,45 @@ exports.bot = function (message) {
   embed.setFooter("encbot, created with ❤️️ by @Žygimantas👻#1755");
 
   message.edit({embed: embed})
+}
+
+exports.rtenable = function (message) {
+  embed = new Discord.RichEmbed();
+
+  embed.setTitle("RichText enabled");
+
+  message.edit({embed: embed});
+  lsettings.setItem("richtext", "enabled");
+}
+
+exports.rtdisable = function (message) {
+  embed = new Discord.RichEmbed();
+
+  embed.setTitle("RichText disabled");
+
+  message.edit({embed: embed});
+  lsettings.setItem("richtext", "disabled");
+}
+
+exports.rtcolor = function (message) {
+  if (message.content.split(" ").length > 1) {
+    rtcolor = parseInt(message.content.split(" ")[1], 16);
+    console.log(rtcolor);
+    if (isNaN(rtcolor)) {
+      embed = new Discord.RichEmbed();
+
+      embed.setTitle("RichText");
+      embed.setColor(rtcolor);
+      embed.setDescription("Invalid RichText color!");
+      message.edit({embed: embed})
+    } else {
+      embed = new Discord.RichEmbed();
+
+      embed.setTitle("RichText");
+      embed.setDescription("RichText color set!");
+      message.edit({embed: embed});
+      lsettings.setItem("rtcolor", message.content.split(" ")[1])
+    }
+
+  }
 }
