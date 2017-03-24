@@ -19,6 +19,9 @@ exports.osustats = function (message) {
       embed.setTitle("Osu! stats for " + username);
       embed.setColor(0x303030)
       embed.setDescription("PP: " + user.pp.raw);
+      embed.addField("Play count: ", user.counts.plays, false);
+      embed.addField("Country: ", user.country, false);
+      console.log(user);
 
       embed.setFooter("encbot, created with ❤️️ by @Žygimantas👻#1755");
 
