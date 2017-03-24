@@ -95,6 +95,7 @@ exports.rtcolor = function (message) {
       embed = new Discord.RichEmbed();
 
       embed.setTitle("RichText");
+      embed.setColor(rtcolor);
       embed.setDescription("Invalid RichText color!");
       message.edit({embed: embed})
     } else {
